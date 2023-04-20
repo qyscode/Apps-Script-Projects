@@ -52,11 +52,4 @@ function sendEmail() {
   }
 
 // Send email
-MailApp.sendEmail(recipient, subject, body, {name:"CUSTOM NAME, IF YOU WANT",attachments: [excel_file, zip_file]})}
-
-
-
-
-
-
-
+MailApp.sendEmail(recipient, subject, body, {name:"OPTIONAL CUSTOM SENDER NAME",attachments: [excel_file, zip_file]})}
