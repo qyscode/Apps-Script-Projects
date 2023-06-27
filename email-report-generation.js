@@ -99,3 +99,9 @@ function sortANDrename() {
   Logger.log("Sort and renaming time: " + renamingtime + "ms");
 }
 
+function simpleSendEmail() {
+  var recipient = "their_email_address";
+  var subject = `Test email subject :)`;
+  var body = "Hello world!";
+  GmailApp.sendEmail(recipient,subject,body)
+}
