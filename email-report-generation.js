@@ -16,12 +16,6 @@ let currentDate = `${day}/${month}/${year}`;
 var folderDateName = `${year}_${month}_${day}`;
 
 function sendEmail() {
-
-  // Define email parameters
-  var recipient = "RECIPIENT HERE";
-  var subject = `Report (${currentDate})`;
-  var body = "Hi all,\n\nAttached are the reports for today.\n\nRegards,\nName\n\n\n";
-
   // Extract Excel file
   var fileId = "GOOGLE SHEETS FILE ID HERE";
   var excel_file = UrlFetchApp.fetch(
@@ -56,13 +50,7 @@ function sendEmail() {
 // Send email
 MailApp.sendEmail(recipient, subject, body, {name:"OPTIONAL CUSTOM SENDER NAME",attachments: [excel_file, zip_file]})}
 
-let compilation_end = new Date();
-let time = compilation_end - compilation_start;
-Logger.log("compilation time: " + time + "ms");
-
 function sortANDrename() {
-  let renamingstart = new Date();
-
   // correct workbook name "Daily Report | MTH 2023"
   let actual_numeric_month = date.getMonth();
   const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -93,15 +81,4 @@ function sortANDrename() {
     var title_of_pdf = sheet.getRange(int,int,int,int).getValues();
     pdfFile.setName(title_of_pdf)
   }
-
-  let renamingend = new Date();
-  let renamingtime = renamingend - renamingstart;
-  Logger.log("Sort and renaming time: " + renamingtime + "ms");
-}
-
-function simpleSendEmail() {
-  var recipient = "their_email_address";
-  var subject = `Test email subject :)`;
-  var body = "Hello world!";
-  GmailApp.sendEmail(recipient,subject,body)
 }
