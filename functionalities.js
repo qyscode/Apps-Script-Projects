@@ -23,6 +23,7 @@ let year = date.getFullYear();
 function double_Digit_(number) {
     if (number < 10) {
         number = "0" + number;
+        return number
     }
     return number
 }
